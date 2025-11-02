@@ -1,0 +1,234 @@
+import React, { useState } from 'react';
+import { Dribbble, Linkedin, Mail, Github, ExternalLink, ChevronRight } from 'lucide-react';
+
+export default function Portfolio() {
+  const [selectedProject, setSelectedProject] = useState(null);
+  
+  // Replace with your actual projects
+  const projects = [
+    {
+      id: 1,
+      title: "E-Commerce Mobile App",
+      category: "Mobile Design",
+      description: "A seamless shopping experience with intuitive navigation and checkout flow",
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
+      tags: ["UI Design", "UX Research", "Prototyping"],
+      year: "2024"
+    },
+    {
+      id: 2,
+      title: "SaaS Dashboard",
+      category: "Web Design",
+      description: "Analytics dashboard for project management with data visualization",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+      tags: ["UI Design", "Data Viz", "Web App"],
+      year: "2024"
+    },
+    {
+      id: 3,
+      title: "Banking App Redesign",
+      category: "Mobile Design",
+      description: "Modernizing financial services with accessible and secure design",
+      image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
+      tags: ["UI Design", "UX Research", "Accessibility"],
+      year: "2023"
+    },
+    {
+      id: 4,
+      title: "Design System",
+      category: "System Design",
+      description: "Comprehensive component library for enterprise products",
+      image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800&q=80",
+      tags: ["Design System", "Components", "Documentation"],
+      year: "2023"
+    }
+  ];
+
+  const skills = [
+    "User Research", "Wireframing", "Prototyping", "Visual Design",
+    "Interaction Design", "Usability Testing", "Design Systems", "Figma",
+    "Adobe XD", "Sketch", "User Flows", "Information Architecture"
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      {/* Hero Section */}
+      <div className="max-w-7xl mx-auto px-6 py-20">
+        <nav className="flex justify-between items-center mb-20">
+          <div className="text-2xl font-bold text-white">YourName</div>
+          <div className="flex gap-6">
+            <a href="#work" className="text-gray-300 hover:text-white transition">Work</a>
+            <a href="#about" className="text-gray-300 hover:text-white transition">About</a>
+            <a href="#contact" className="text-gray-300 hover:text-white transition">Contact</a>
+          </div>
+        </nav>
+
+        <div className="text-center mb-32">
+          <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            UI/UX Designer
+            <br />
+            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Crafting Experiences
+            </span>
+          </h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-8">
+            Creating intuitive and beautiful digital products that solve real problems
+          </p>
+          <div className="flex gap-4 justify-center">
+            <a href="#" className="p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition">
+              <Dribbble size={20} />
+            </a>
+            <a href="#" className="p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition">
+              <Linkedin size={20} />
+            </a>
+            <a href="#" className="p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition">
+              <Github size={20} />
+            </a>
+            <a href="#" className="p-3 bg-white/10 hover:bg-white/20 rounded-full text-white transition">
+              <Mail size={20} />
+            </a>
+          </div>
+        </div>
+
+        {/* Projects Section */}
+        <section id="work" className="mb-32">
+          <h2 className="text-4xl font-bold text-white mb-12">Selected Work</h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            {projects.map((project) => (
+              <div
+                key={project.id}
+                className="group relative bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-purple-400/50 transition-all duration-300 cursor-pointer"
+                onClick={() => setSelectedProject(project)}
+              >
+                <div className="aspect-video overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6">
+                  <div className="flex justify-between items-start mb-3">
+                    <div>
+                      <h3 className="text-2xl font-semibold text-white mb-2">{project.title}</h3>
+                      <p className="text-purple-300 text-sm">{project.category}</p>
+                    </div>
+                    <span className="text-gray-400 text-sm">{project.year}</span>
+                  </div>
+                  <p className="text-gray-300 mb-4">{project.description}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1 bg-white/10 rounded-full text-xs text-gray-300"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex items-center text-purple-400 mt-4 group-hover:gap-2 transition-all">
+                    <span className="text-sm">View Project</span>
+                    <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* About Section */}
+        <section id="about" className="mb-32">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl font-bold text-white mb-6">About Me</h2>
+              <p className="text-gray-300 mb-4 leading-relaxed">
+                I'm a UI/UX designer passionate about creating digital experiences that are both beautiful and functional. With a focus on user-centered design, I transform complex problems into simple, intuitive solutions.
+              </p>
+              <p className="text-gray-300 mb-6 leading-relaxed">
+                My process combines research, ideation, and iteration to deliver products that users love. I believe great design is invisible—it just works.
+              </p>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full text-white font-medium hover:shadow-lg hover:shadow-purple-500/50 transition"
+              >
+                Let's Work Together
+                <ExternalLink size={16} />
+              </a>
+            </div>
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8">
+              <h3 className="text-2xl font-semibold text-white mb-6">Skills & Tools</h3>
+              <div className="flex flex-wrap gap-3">
+                {skills.map((skill, i) => (
+                  <span
+                    key={i}
+                    className="px-4 py-2 bg-white/10 rounded-lg text-gray-300 hover:bg-white/20 transition"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section id="contact" className="text-center">
+          <h2 className="text-4xl font-bold text-white mb-6">Let's Create Something Amazing</h2>
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            Have a project in mind? I'd love to hear about it. Let's chat!
+          </p>
+          <a
+            href="mailto:your.email@example.com"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-purple-900 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
+          >
+            <Mail size={20} />
+            Get In Touch
+          </a>
+        </section>
+      </div>
+
+      {/* Footer */}
+      <footer className="border-t border-white/10 mt-32">
+        <div className="max-w-7xl mx-auto px-6 py-8 flex justify-between items-center text-gray-400 text-sm">
+          <p>© 2024 YourName. All rights reserved.</p>
+          <p>Designed with passion ✨</p>
+        </div>
+      </footer>
+
+      {/* Project Modal (optional enhancement) */}
+      {selectedProject && (
+        <div
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-6 z-50"
+          onClick={() => setSelectedProject(null)}
+        >
+          <div
+            className="bg-slate-800 rounded-2xl max-w-3xl w-full p-8"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={selectedProject.image}
+              alt={selectedProject.title}
+              className="w-full h-64 object-cover rounded-xl mb-6"
+            />
+            <h3 className="text-3xl font-bold text-white mb-2">{selectedProject.title}</h3>
+            <p className="text-purple-300 mb-4">{selectedProject.category} • {selectedProject.year}</p>
+            <p className="text-gray-300 mb-6">{selectedProject.description}</p>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {selectedProject.tags.map((tag, i) => (
+                <span key={i} className="px-3 py-1 bg-white/10 rounded-full text-sm text-gray-300">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <button
+              onClick={() => setSelectedProject(null)}
+              className="px-6 py-2 bg-purple-500 rounded-full text-white hover:bg-purple-600 transition"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
